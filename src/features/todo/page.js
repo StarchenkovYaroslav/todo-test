@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { addTodo } from '../../packages/db'
+import { createTodo } from '../../packages/db'
 import { Timestamp } from 'firebase/firestore'
 import dayjs from 'dayjs'
 
@@ -15,7 +15,7 @@ const Page = () => {
     const name = evt.target.name
     let value
 
-    if (evt.target.type === 'file') value = [...evt.target.files].map(file => file.name)
+    if (evt.target.type === 'file') value = evt.target.files
     else value = evt.target.value
 
     setValues(prevState => ({ ...prevState, [name]: value }))
@@ -23,14 +23,14 @@ const Page = () => {
 
   const onSubmit = (evt) => {
     evt.preventDefault()
-    addTodo({
+    createTodo({
       title: values.title,
       description: values.description,
       due: Timestamp.fromDate(dayjs(values.due, 'YYYY-MM-DD').hour(0).minute(0).toDate()),
       files: values.files,
     })
       .then(() => alert('Добавлено'))
-      .catch(() => alert('Ошибка'))
+      .catch(alert)
   }
 
   return (
