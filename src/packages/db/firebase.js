@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { collection, addDoc, getFirestore, doc, updateDoc } from 'firebase/firestore'
+import { collection, addDoc, getFirestore, doc, updateDoc, deleteDoc } from 'firebase/firestore'
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -49,4 +49,8 @@ export const getFileDownloadUrl = async (path) => {
 
 export const updateDoneById = async (id, done) => {
   await updateDoc(doc(todoCollection, id), { done })
+}
+
+export const removeTodoById = async (id) => {
+  await deleteDoc(doc(todoCollection, id))
 }

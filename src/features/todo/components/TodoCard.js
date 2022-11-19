@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import FileLink from './FileLink'
-import { updateDoneById } from '../../../packages/db'
+import { removeTodoById, updateDoneById } from '../../../packages/db'
 
 const TodoCard = ({ id, title, description, due, files, done }) => {
   const dueDate = dayjs(due.toDate())
@@ -16,9 +16,20 @@ const TodoCard = ({ id, title, description, due, files, done }) => {
     }
   }
 
+  const remove = async () => {
+    try {
+      await removeTodoById(id)
+
+      alert('Удалено')
+    } catch (err) {
+      alert('Ошибка')
+    }
+  }
+
   return (
     <div style={{ border: '1px solid black'}}>
       <input type="checkbox" checked={done} onChange={changeDone} />
+      <button type="button" onClick={remove}>Удалить</button>
       {expired && <div>Просрочено</div>}
       <div>{title}</div>
       <div>{description}</div>
