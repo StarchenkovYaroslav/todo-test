@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { getFileDownloadUrl } from '../../../packages/db'
+import { getFileDownloadUrl } from '../../../../packages/db'
+import './FileLink.less'
 
 const FileLink = ({ file }) => {
   const [href, setHref] = useState('')
@@ -10,9 +11,9 @@ const FileLink = ({ file }) => {
     getFileDownloadUrl(file)
       .then(setHref)
       .catch(() => alert('Ошибка'))
-  }, [])
+  }, [file])
 
-  return <a target="_blank" href={href}>{name}</a>
+  return <a className="document-link" target="_blank" rel="noreferrer" href={href}>{name}</a>
 }
 
 export default FileLink

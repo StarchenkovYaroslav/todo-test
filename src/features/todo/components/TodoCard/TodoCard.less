@@ -1,0 +1,53 @@
+@import "../../../../styles/styles";
+
+@expired-color: #c40a0a;
+@icon-dimension: 20px;
+
+.card {
+  border: 1px solid @theme-color;
+  border-radius: @border-radius;
+  padding: 8px;
+
+  &_expired {
+    border-color: @expired-color;
+  }
+}
+
+.card__header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px;
+}
+
+.card__done {
+  cursor: pointer;
+  height: @icon-dimension;
+  margin: 0;
+  width: @icon-dimension;
+}
+
+.card__due {
+  color: @theme-color;
+
+  &_expired {
+    color: @expired-color;
+  }
+}
+
+.card__delete-button {
+  .icon-button("card__delete-button.svg", @icon-dimension, @icon-dimension)
+}
+
+.card__title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 5px;
+}
+
+.card__description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 5px;
+}

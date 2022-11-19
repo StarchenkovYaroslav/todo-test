@@ -1,0 +1,32 @@
+@theme-color: #0081d1;
+@border-radius: 6px;
+@images-path: "./images";
+
+.button() {
+  border: none;
+  cursor: pointer;
+  transition: all .3s;
+
+  &:hover {
+    opacity: .7;
+  }
+}
+
+.text-button(@background-color, @color) {
+  .button();
+
+  background-color: @background-color;
+  border-radius: @border-radius;
+  box-sizing: border-box;
+  color: @color;
+  padding: 4px 8px;
+}
+
+.icon-button(@image-name, @width, @height) {
+  .button();
+
+  background: transparent url("@{images-path}/@{image-name}") no-repeat center center / contain;
+  height: @height;
+  padding: 0;
+  width: @width;
+}

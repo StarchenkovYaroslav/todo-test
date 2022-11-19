@@ -1,11 +1,11 @@
-import { AddTodoForm, TodoList } from './components'
+import { AddTodoForm, TodoList, Layout } from './components'
 
 const Page = () => {
   return (
-    <div>
+    <Layout>
       <AddTodoForm />
       <TodoList />
-    </div>
+    </Layout>
   )
 }
 
