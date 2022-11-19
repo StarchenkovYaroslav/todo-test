@@ -13,7 +13,7 @@ const TodoList = () => {
     <>
       <h1>{title}</h1>
       {todos && todos.docs.map(todo => (
-        <TodoCard key={todo.id} {...todo.data()} />
+        <TodoCard key={todo.id} id={todo.id} {...todo.data()} />
       ))}
     </>
   )

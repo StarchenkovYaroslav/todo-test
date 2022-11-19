@@ -1,8 +1,7 @@
 import { initializeApp } from 'firebase/app'
-import { collection, addDoc, getFirestore } from 'firebase/firestore'
-import { getStorage, ref, uploadBytes, getMetadata } from 'firebase/storage'
+import { collection, addDoc, getFirestore, doc, updateDoc } from 'firebase/firestore'
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid';
-import { getDownloadURL } from '@firebase/storage'
 
 initializeApp({
   apiKey: "AIzaSyB8X8uykLOA1sN3skstUgmmLiX8_ECbv9Q",
@@ -46,4 +45,8 @@ export const createTodo = async ({ files, ...rest }) => {
 
 export const getFileDownloadUrl = async (path) => {
   return await getDownloadURL(ref(storage, path))
+}
+
+export const updateDoneById = async (id, done) => {
+  await updateDoc(doc(todoCollection, id), { done })
 }

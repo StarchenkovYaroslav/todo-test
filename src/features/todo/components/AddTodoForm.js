@@ -19,6 +19,7 @@ const AddTodoForm = () => {
         description: values.description,
         due: Timestamp.fromDate(dayjs(values.due, 'YYYY-MM-DD').hour(0).minute(0).toDate()),
         files: values.files,
+        done: false,
       })
 
       alert('Добавлено')
