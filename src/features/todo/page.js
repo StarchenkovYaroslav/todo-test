@@ -1,7 +1,12 @@
-import {AddTodoForm} from './components'
+import { AddTodoForm, TodoList } from './components'
 
 const Page = () => {
-  return <AddTodoForm />
+  return (
+    <div>
+      <AddTodoForm />
+      <TodoList />
+    </div>
+  )
 }
 
 export default Page

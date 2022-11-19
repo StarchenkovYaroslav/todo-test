@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app'
 import { collection, addDoc, getFirestore } from 'firebase/firestore'
-import { getStorage, ref, uploadBytes } from 'firebase/storage'
+import { getStorage, ref, uploadBytes, getMetadata } from 'firebase/storage'
 import { v4 as uuidv4 } from 'uuid';
+import { getDownloadURL } from '@firebase/storage'
 
 initializeApp({
   apiKey: "AIzaSyB8X8uykLOA1sN3skstUgmmLiX8_ECbv9Q",
@@ -13,9 +14,8 @@ initializeApp({
   measurementId: "G-3N088V8S8Y"
 })
 
-const todoCollection = collection(getFirestore(), 'todo')
+export const todoCollection = collection(getFirestore(), 'todo')
 const storage = getStorage()
-
 
 const _uploadFile = async (file) => {
   const path = `${uuidv4()}.${file.name.replaceAll(' ', '_')}`
@@ -42,4 +42,8 @@ const _addTodo = async (data) => {
 export const createTodo = async ({ files, ...rest }) => {
   const paths = await _uploadFiles(files)
   await _addTodo({ ...rest, files: paths })
+}
+
+export const getFileDownloadUrl = async (path) => {
+  return await getDownloadURL(ref(storage, path))
 }
