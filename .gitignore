@@ -1,5 +1,7 @@
 .idea
 
+.firebase
+
 # dependencies
 /node_modules
 /.pnp
