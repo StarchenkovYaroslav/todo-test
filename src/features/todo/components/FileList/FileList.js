@@ -2,6 +2,13 @@ import { List } from '../../../../ui'
 import FileLink from '../FileLink'
 import './FileList.less'
 
+/**
+ * Renders list of {@link FileLink}
+ *
+ * @param {obj} props - component props
+ * @param {string[]} props.files - array of files server paths
+ * @returns {JSX.Element}
+ */
 const FileList = ({ files }) => {
   return (
     <List

@@ -3,6 +3,18 @@ import { removeTodoById, updateDoneById } from '../../../../packages/db'
 import FileList from '../FileList'
 import './TodoCard.less'
 
+/**
+ * Renders card with todo info
+ *
+ * @param {obj} props - component props
+ * @param {string} props.id - todo id
+ * @param {string} props.title - todo title
+ * @param {string} props.description - todo description
+ * @param {string} props.due - date for todo to expire
+ * @param {string[]} props.files - array of files server paths
+ * @param {boolean} props.done - todo status of being done or not
+ * @returns {JSX.Element}
+ */
 const TodoCard = ({ id, title, description, due, files, done }) => {
   const dueDate = dayjs(due.toDate())
   const expired = dueDate.isBefore(dayjs()) && !done

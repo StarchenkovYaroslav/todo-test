@@ -2,6 +2,13 @@ import { useEffect, useState } from 'react'
 import { getFileDownloadUrl } from '../../../../packages/db'
 import './FileLink.less'
 
+/**
+ * Renders link to file
+ *
+ * @param {obj} props - component props
+ * @param {string} props.file - file server path
+ * @returns {JSX.Element}
+ */
 const FileLink = ({ file }) => {
   const [href, setHref] = useState('')
 

@@ -4,6 +4,12 @@ import TodoCard from '../TodoCard/TodoCard'
 import { List } from '../../../../ui'
 import './TodoList.less'
 
+
+/**
+ * Renders list of {@link TodoCard}
+ *
+ * @returns {JSX.Element}
+ */
 const TodoList = () => {
   const [todos, loading, error] = useCollection(todoCollection)
 

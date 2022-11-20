@@ -5,6 +5,11 @@ import { useForm } from '../../../../hooks'
 import './AddTodoForm.less'
 import FieldContainer from '../FieldContainer'
 
+/**
+ * Renders form to add todo
+ *
+ * @returns {JSX.Element}
+ */
 const AddTodoForm = () => {
   const { values, onInputChange } = useForm({
     title: '',
