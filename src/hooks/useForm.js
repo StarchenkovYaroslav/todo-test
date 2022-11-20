@@ -1,5 +1,17 @@
 import { useState } from 'react'
 
+/**
+ * @typedef useFormReturn
+ * @property {object} values - form fields values
+ * @property {function} onInputChange - callback of input change event
+ */
+
+/**
+ * Hook for form fields managing
+ *
+ * @param {object} initialValues - initial for fields values
+ * @returns {useFormReturn}
+ */
 const useForm = (initialValues) => {
   const [values, setValues] = useState(initialValues)
 
